@@ -20,7 +20,7 @@
 
 .ruby-gemset
 .ruby-version
-# /config/database.yml
+/config/database.yml
 # React on Rails
 npm-debug.log*
 node_modules
