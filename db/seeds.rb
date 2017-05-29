@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+smiggles = Smiggle.create({happiness: 80, hunger: 60, thirst: 30, waste: 40})
