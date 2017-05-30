@@ -1,1 +1,1 @@
-Smiggle.create(happiness: 60, hunger: 40, thirst: 50, waste: 40)
+Smiggle.create(happiness: 60, hunger: 40, thirst: 50, waste: 40, boredom: 10)
