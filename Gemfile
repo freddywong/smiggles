@@ -36,6 +36,8 @@ gem 'redis', '~> 3.0'
 gem 'draper'
 gem 'jquery-rails'
 
+gem 'bootstrap-sass', '~> 3.3.6'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
