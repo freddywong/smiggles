@@ -1,5 +1,6 @@
 class SmigglesController < ApplicationController
   before_action :get_smiggle, only: [:edit, :update]
+  # before_action :broadcast_smiggle, only: [:edit]
   def edit
     
   end
@@ -10,11 +11,11 @@ class SmigglesController < ApplicationController
     else
       @smiggle.happiness = 80
     end
-    
+
+    @smiggle.food += 10
+
     if @smiggle.save
-      ActionCable.server.broadcast 'smiggles',
-        default_face: @smiggle.decorate.default_face
-      head :ok
+      broadcast_smiggle
     end
   end
 
@@ -24,4 +25,10 @@ class SmigglesController < ApplicationController
     @smiggle = Smiggle.first.decorate
   end
 
+  def broadcast_smiggle
+    ActionCable.server.broadcast 'smiggles',
+      default_face: @smiggle.decorate.default_face,
+      food: @smiggle.food
+    head :ok
+  end
 end

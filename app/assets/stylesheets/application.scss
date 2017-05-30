@@ -14,6 +14,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "smiggles";
+@import "components/progress_bar";
+@import "components/items";
+
 .center { 
   position: absolute;
   top: 50%;

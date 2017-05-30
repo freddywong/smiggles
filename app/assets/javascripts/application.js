@@ -15,5 +15,6 @@
 //= require jquery3
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require_tree .
+
 //= require_tree ./channels
+//= require_tree .

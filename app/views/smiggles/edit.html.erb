@@ -1,7 +1,13 @@
 <div class="container">
-  <div class="center">
-    <%= image_tag(@smiggle.default_face, id: "face") %>  
-    <%= button_to "food", smiggle_path(@smiggle.id), method: :put, remote: true %>
+  <div class="center dropzone">
+    <div class="smiggle" data-id=<%= @smiggle.id %>>
+      <%= render partial: "faces", locals: {faces: @smiggle.faces} %>  
+    </div>
   </div>
+  <div id="food-progress"><%= image_tag('fish.png', id: 'fish', class: 'draggable') %></div>
 </div>
+
+<script>
+  var foodProgress = foodProgress("<%= @smiggle.food %>")
+</script>
 
