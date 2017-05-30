@@ -13,10 +13,9 @@ class SmiggleDecorator < Draper::Decorator
   def default_face
     case 
     when object.happiness >= 80
-      'happy-100.gif'
+      h.image_path("happy-100.gif")  
     when object.happiness >= 60
-      'happy-80.gif'
+      h.image_path("happy-80.gif")
     end
-      
   end
 end
