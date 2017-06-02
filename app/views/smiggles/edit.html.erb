@@ -1,7 +1,9 @@
 <div class="container">
   <div class="center dropzone">
-    <div class="smiggle" data-id=<%= @smiggle.id %>>
-      <%= render partial: "faces", locals: {faces: @smiggle.faces} %>  
+    <div id="happiness-progress">
+      <div class="smiggle" data-id=<%= @smiggle.id %>>
+        <%= render partial: "faces", locals: {faces: @smiggle.faces} %>  
+      </div>
     </div>
   </div>
   <div id="food-progress"><%= image_tag('fish.png', id: 'fish', class: 'draggable') %></div>
@@ -9,5 +11,6 @@
 
 <script>
   var foodProgress = foodProgress("<%= @smiggle.food %>")
+  var happinessProgress = happinessProgress("<%= @smiggle.happiness %>")
 </script>
 

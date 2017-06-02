@@ -83,7 +83,10 @@ $(function() {
       var smiggleId = $(".smiggle").data('id')
       $.ajax({
         url: "/smiggles/" + smiggleId,
-        method: 'put'
+        method: 'put',
+        data: { 
+          item: 'food'
+        }
       }).done(function() {
         console.log('Updated Food')
       });

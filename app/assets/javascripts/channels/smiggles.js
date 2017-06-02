@@ -9,9 +9,12 @@ App.cable = ActionCable.createConsumer();
 App.smiggles = App.cable.subscriptions.create('SmigglesChannel', {  
 
   received: function(data) {
+    
     $(".smiggle").children().hide();
-    $("#" + data.default_face).show();
-
-    updateFoodProgress(data.food, foodProgress)
+    var face = $("#" + data.default_face)
+    face.show().addClass('center');
+  
+    updateProgress(data.food, foodProgress)
+    updateProgress(data.happiness, happinessProgress)
   }
 });
