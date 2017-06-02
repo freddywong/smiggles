@@ -12,11 +12,15 @@
   <div id="drink-progress" class="progress-gauge">
     <%= image_tag('drop.png', id: 'drink', class: 'draggable item') %>
   </div>
+  <div id="boredom-progress" class="progress-gauge">
+    <%= image_tag('yarn.png', id: 'boredom', class: 'draggable item') %>
+  </div>
 </div>
 
 <script>
   var foodProgress = foodProgress("<%= @smiggle.food %>", 'food-progress')
   var drinkProgress = drinkProgress("<%= @smiggle.drink %>", 'drink-progress')
+  var boredomProgress = boredomProgress("<%= @smiggle.boredom %>", 'boredom-progress')
   var happinessProgress = happinessProgress("<%= @smiggle.happiness %>")
 </script>
 

@@ -6,7 +6,7 @@ class SmigglesController < ApplicationController
   end
 
   def update
-    @smiggle.increase_attribute(params[:item])
+    @smiggle.adjust_attribute(params[:item])
     @smiggle.calculate_happiness
 
     if @smiggle.save
@@ -25,7 +25,8 @@ class SmigglesController < ApplicationController
       default_face: @smiggle.decorate.default_face,
       happiness: @smiggle.happiness,
       food: @smiggle.food,
-      drink: @smiggle.drink
+      drink: @smiggle.drink,
+      boredom: @smiggle.boredom
     head :ok
   end
 end

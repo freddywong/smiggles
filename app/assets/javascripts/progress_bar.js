@@ -54,3 +54,7 @@ function foodProgress(progress, progressType) {
 function drinkProgress(progress, progressType) {
   return itemProgress(progress, progressType)
 }
+
+function boredomProgress(progress, progressType) {
+  return itemProgress(progress, progressType) 
+}
