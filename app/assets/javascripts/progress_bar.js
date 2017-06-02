@@ -20,9 +20,9 @@ function happinessProgress(progress) {
   return bar
 }
 
-function foodProgress(progress) {
+function itemProgress(progress, progressType) {
   var progress = convertProgress(progress);
-  var bar = new ProgressBar.Circle('#food-progress', {
+  var bar = new ProgressBar.Circle('#' + progressType, {
 
     color: '#FFEA82',
     trailColor: '#eee',
@@ -47,4 +47,10 @@ function updateProgress(progress, bar) {
   bar.animate(progress)
 }
 
+function foodProgress(progress, progressType) {
+  return itemProgress(progress, progressType)
+}
 
+function drinkProgress(progress, progressType) {
+  return itemProgress(progress, progressType)
+}

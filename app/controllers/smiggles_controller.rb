@@ -8,7 +8,7 @@ class SmigglesController < ApplicationController
   def update
     @smiggle.increase_attribute(params[:item])
     @smiggle.calculate_happiness
-  
+
     if @smiggle.save
       broadcast_smiggle
     end
@@ -24,7 +24,8 @@ class SmigglesController < ApplicationController
     ActionCable.server.broadcast 'smiggles',
       default_face: @smiggle.decorate.default_face,
       happiness: @smiggle.happiness,
-      food: @smiggle.food
+      food: @smiggle.food,
+      drink: @smiggle.drink
     head :ok
   end
 end

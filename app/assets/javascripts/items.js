@@ -43,15 +43,15 @@ $(function() {
 
   interact('.center').dropzone({
     // only accept elements matching this CSS selector
-    accept: '#fish',
+    accept: itemId,
     // Require a 75% element overlap for a drop to be possible
     overlap: 0.75,
 
     // // listen for drop related events:
 
     // ondropactivate: function (event) {
-    //   // add active dropzone feedback
-    //   // event.target.classList.add('drop-active');
+      // add active dropzone feedback
+      // event.target.classList.add('drop-active');
 
     // },
 
@@ -70,35 +70,46 @@ $(function() {
     //   event.relatedTarget.classList.remove('can-drop');
     //   event.relatedTarget.textContent = 'Dragged out';
     // },
-    ondrop: function(event) {
-      var originalFish = $('#fish')
-      originalFish.get(0).style.webkitTransform =
-      originalFish.get(0).style.transform =
-        'translate(0px, 0px)';
-      originalFish.get(0).setAttribute('data-x', 0);
-      originalFish.get(0).setAttribute('data-y', 0);
-      $('#fish').remove();
-      $('#food-progress').append(originalFish);
+    ondrop: dropItemFeedback
 
-      var smiggleId = $(".smiggle").data('id')
-      $.ajax({
-        url: "/smiggles/" + smiggleId,
-        method: 'put',
-        data: { 
-          item: 'food'
-        }
-      }).done(function() {
-        console.log('Updated Food')
-      });
-    }
-
-      
-      
-  
     // ondropdeactivate: function (event) {
     //   // remove active dropzone feedback
     //   event.target.classList.remove('drop-active');
     //   event.target.classList.remove('drop-target');
     // }
   });
+
+  function itemId(event) {
+    return '#' + event.relatedTarget.id
+  }
+
+  function dropItemFeedback(event) {
+    var itemType = event.relatedTarget.id;
+    resetItem(itemType)
+    sendItem(itemType)    
+  }
+
+  function resetItem(itemType) {
+    var originalItem = $('#' + itemType)
+    originalItem.get(0).style.webkitTransform =
+    originalItem.get(0).style.transform =
+      'translate(0px, 0px)';
+    originalItem.get(0).setAttribute('data-x', 0);
+    originalItem.get(0).setAttribute('data-y', 0);
+    $('#' + itemType).remove();
+    $('#' + itemType + '-progress').append(originalItem);
+  }
+
+  function sendItem(itemType) {
+    var smiggleId = $(".smiggle").data('id')
+    $.ajax({
+      url: "/smiggles/" + smiggleId,
+      method: 'patch',
+      data: { 
+        item: itemType
+      }
+    }).done(function() {
+      console.log('Updated ' + itemType)
+    });    
+  }
 });

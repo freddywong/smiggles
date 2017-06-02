@@ -6,6 +6,8 @@ class Smiggle < ApplicationRecord
     case attribute
     when 'food'
       increase_food
+    when 'drink'
+      increase_drink
     end
   end  
 
@@ -22,6 +24,14 @@ class Smiggle < ApplicationRecord
 
   def decrease_food 
     self.food = decrease_quantity('food') if within_limit? decrease_quantity('food')
+  end
+
+  def increase_drink 
+    self.drink = increase_quantity('drink') if within_limit? increase_quantity('drink')
+  end
+
+  def decrease_drink 
+    self.drink = decrease_quantity('drink') if within_limit? decrease_quantity('drink')
   end
 
   def increase_boredom

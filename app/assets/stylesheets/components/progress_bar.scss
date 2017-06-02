@@ -1,14 +1,24 @@
-#food-progress {
+.progress-gauge {
   position: absolute;
-  top: 80%;
-  left: 30%;
-  transform: translate(-80%, -30%);
-  width: 100px;
-  height: 100px;
+}
+
+#food-progress {
+  top: 65%;
+  left: 25%;
+  transform: translate(-65%, -25%);
+  width: 80px;
+  height: 80px;
+}
+
+#drink-progress {
+  top: 71%;
+  left: 81%;
+  transform: translate(-72%, -83%);
+  width: 80px;
+  height: 80px;
 }
 
 #happiness-progress {
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
