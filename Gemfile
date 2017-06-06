@@ -36,7 +36,7 @@ gem 'redis', '~> 3.0'
 gem 'draper'
 gem 'jquery-rails'
 
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'materialize-sass'
 
 
 group :development, :test do
