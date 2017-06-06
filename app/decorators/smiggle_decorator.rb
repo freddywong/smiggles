@@ -1,25 +1,24 @@
 class SmiggleDecorator < Draper::Decorator
   delegate_all
 
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
-
   def default_face
     case 
-    when object.happiness >= 80
-      'happy-100'
-    when object.happiness >= 60
-      'happy-80'
+    when object.life == 100
+      'life-100'
+    when object.life >= 80
+      'life-80'
+    when object.life >= 60
+      'life-60'
+    when object.life >= 40
+      'life-40'  
+    when object.life >= 20
+      'life-20'
+    when object.life == 0
+      'life-0'
     end
   end
 
   def faces
-    Dir.glob("app/assets/gifs/faces/*.gif")
+    Dir.glob("app/assets/gifs/faces/*.gif").map{ |face| face.split('/').last.gsub('.gif', '') }
   end
 end

@@ -2,9 +2,9 @@ function convertProgress(progress) {
   return progress / 100
 }
 
-function happinessProgress(progress) {
+function lifeProgress(progress) {
   var progress = convertProgress(progress);
-  var bar = new ProgressBar.Circle('#happiness-progress', {
+  var bar = new ProgressBar.Circle('#life-progress', {
     strokeWidth: 10,
     easing: 'easeInOut',
     duration: 1400,
@@ -55,6 +55,6 @@ function drinkProgress(progress, progressType) {
   return itemProgress(progress, progressType)
 }
 
-function boredomProgress(progress, progressType) {
+function happinessProgress(progress, progressType) {
   return itemProgress(progress, progressType) 
 }

@@ -1,13 +1,12 @@
 class SmigglesController < ApplicationController
   before_action :get_smiggle, only: [:edit, :update]
-  # before_action :broadcast_smiggle, only: [:edit]
   def edit
     
   end
 
   def update
-    @smiggle.adjust_attribute(params[:item])
-    @smiggle.calculate_happiness
+    @smiggle.increase_attribute(params[:item])
+    @smiggle.calculate_life
 
     if @smiggle.save
       broadcast_smiggle
@@ -26,7 +25,7 @@ class SmigglesController < ApplicationController
       happiness: @smiggle.happiness,
       food: @smiggle.food,
       drink: @smiggle.drink,
-      boredom: @smiggle.boredom
+      life: @smiggle.life
     head :ok
   end
 end

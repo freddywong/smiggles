@@ -1,6 +1,6 @@
 <div class="container">
   <div class="center dropzone">
-    <div id="happiness-progress" class="progress-gauge">
+    <div id="life-progress" class="progress-gauge">
       <div class="smiggle" data-id=<%= @smiggle.id %>>
         <%= render partial: "faces", locals: {faces: @smiggle.faces} %>  
       </div>
@@ -12,15 +12,15 @@
   <div id="drink-progress" class="progress-gauge">
     <%= image_tag('drop.png', id: 'drink', class: 'draggable item') %>
   </div>
-  <div id="boredom-progress" class="progress-gauge">
-    <%= image_tag('yarn.png', id: 'boredom', class: 'draggable item') %>
+  <div id="happiness-progress" class="progress-gauge">
+    <%= image_tag('yarn.png', id: 'happiness', class: 'draggable item') %>
   </div>
 </div>
 
 <script>
   var foodProgress = foodProgress("<%= @smiggle.food %>", 'food-progress')
   var drinkProgress = drinkProgress("<%= @smiggle.drink %>", 'drink-progress')
-  var boredomProgress = boredomProgress("<%= @smiggle.boredom %>", 'boredom-progress')
-  var happinessProgress = happinessProgress("<%= @smiggle.happiness %>")
+  var happinessProgress = happinessProgress("<%= @smiggle.happiness %>", 'happiness-progress')
+  var lifeProgress = lifeProgress("<%= @smiggle.life %>")
 </script>
 

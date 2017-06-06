@@ -1,23 +1,35 @@
 class Smiggle < ApplicationRecord
-  validates :food, :drink, :boredom, :waste, 
+  validates :food, :drink, :happiness, :waste, 
     numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, message: "must be between 0 and 100" } 
 
-  def adjust_attribute attribute
+  def increase_attribute attribute
     case attribute
     when 'food'
       increase_food
     when 'drink'
       increase_drink
-    when 'boredom'
-      decrease_boredom
+    when 'happiness'
+      increase_happiness
     end
   end  
 
-  def calculate_happiness
-    happiness = %w( food drink boredom waste ).map do |attribute|
+  def calculate_life
+    life = %w( food drink happiness waste ).map do |attribute|
       calculate attribute
     end
-    self.happiness = happiness.sum  
+    self.life = life.sum  
+  end
+
+  private
+
+  def calculate attribute
+    case attribute
+    when 'food', 'drink', 'happiness'
+      quantity = self.send(attribute)
+    when 'waste'
+      quantity = 100 - self.send(attribute)
+    end
+    quantity * 0.25
   end
 
   def increase_food 
@@ -36,25 +48,13 @@ class Smiggle < ApplicationRecord
     self.drink = decrease_quantity('drink') if within_limit? decrease_quantity('drink')
   end
 
-  def increase_boredom
-    self.boredom = increase_quantity('boredom') if within_limit? increase_quantity('boredom')
+  def increase_happiness
+    self.happiness = increase_quantity('happiness') if within_limit? increase_quantity('happiness')
   end
 
-  def decrease_boredom
-    self.boredom = decrease_quantity('boredom') if within_limit? decrease_quantity('boredom')
-  end
-
-  private
-
-  def calculate attribute
-    case attribute
-    when 'food', 'drink'
-      quantity = self.send(attribute)
-    when 'boredom', 'waste'
-      quantity = 100 - self.send(attribute)
-    end
-    quantity * 0.25
-  end
+  def decrease_happiness
+    self.happiness = decrease_quantity('happiness') if within_limit? decrease_quantity('happiness')
+  end  
 
   def increase_quantity attribute 
     self.send(attribute.to_sym) + 20

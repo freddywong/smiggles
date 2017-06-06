@@ -1,7 +1,5 @@
 <% faces.each do |face| %>
-  <% face_filename = face.split('/').last %>
-  <% face = face_filename.tr('.gif', '') %>
-  <%= image_tag("faces/#{face_filename}", class: "face", id: face) %>
+  <%= image_tag("faces/#{face}", class: "face", id: face) %>
 
   <script>
     var defaultFace = "<%= @smiggle.default_face %>"
