@@ -1,18 +1,23 @@
 <div class="smiggles-container valign-wrapper">
   <div class="container">
     <div class="row">
+      <div class="waste-container"></div>
       <div id="happiness-progress" class="progress-gauge">
         <%= image_tag('yarn.png', id: 'happiness', class: 'draggable item') %>
       </div>
+      <div class="waste-container"></div>
     </div>
     <div class="row">
+      <div class="waste-container"></div>
       <div id="life-progress" class="progress-gauge dropzone">
         <div class="smiggle" data-id=<%= @smiggle.id %>>
           <%= render partial: "faces", locals: {faces: @smiggle.faces} %>  
         </div>
       </div>
+      <div class="waste-container"></div>
     </div>    
     <div class="row">
+      <div class="waste-container"></div>
       <div class="col s6">
         <div id="food-progress" class="progress-gauge">
           <%= image_tag('fish.png', id: 'food', class: 'draggable item') %>    
@@ -23,6 +28,7 @@
           <%= image_tag('drop.png', id: 'drink', class: 'draggable item') %>
         </div>      
       </div>
+      <div class="waste-container"></div>
     </div>  
   </div>  
 </div>
@@ -32,5 +38,7 @@
   var drinkProgress = drinkProgress("<%= @smiggle.drink %>", 'drink-progress')
   var happinessProgress = happinessProgress("<%= @smiggle.happiness %>", 'happiness-progress')
   var lifeProgress = lifeProgress("<%= @smiggle.life %>")
+
+  var waste = showWaste("<%= @smiggle.waste_count %>", "<%= @smiggle.waste_image_path %>")
 </script>
 

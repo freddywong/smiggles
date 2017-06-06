@@ -21,4 +21,12 @@ class SmiggleDecorator < Draper::Decorator
   def faces
     Dir.glob("app/assets/gifs/faces/*.gif").map{ |face| face.split('/').last.gsub('.gif', '') }
   end
+
+  def waste_count
+    waste / 20
+  end
+
+  def waste_image_path
+    ActionController::Base.helpers.image_path("waste.png")
+  end
 end

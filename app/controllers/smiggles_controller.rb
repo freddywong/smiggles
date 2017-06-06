@@ -1,15 +1,14 @@
 class SmigglesController < ApplicationController
   before_action :get_smiggle, only: [:edit, :update]
+  before_action :smiggle_response, only: :update
   def edit
     
   end
 
   def update
-    @smiggle.increase_attribute(params[:item])
-    @smiggle.calculate_life
-
     if @smiggle.save
-      broadcast_smiggle
+      BroadcastService.broadcast(@smiggle, @reaction)
+      head :ok
     end
   end
 
@@ -19,13 +18,13 @@ class SmigglesController < ApplicationController
     @smiggle = Smiggle.first.decorate
   end
 
-  def broadcast_smiggle
-    ActionCable.server.broadcast 'smiggles',
-      default_face: @smiggle.decorate.default_face,
-      happiness: @smiggle.happiness,
-      food: @smiggle.food,
-      drink: @smiggle.drink,
-      life: @smiggle.life
-    head :ok
+  def smiggle_response
+    case params[:smiggle][:item]
+    when "waste"
+      @reaction = ReactionService.new(params[:smiggle][:item]).build_reactions
+    else
+      @smiggle.increase_attribute params[:smiggle][:item]
+      @smiggle.calculate_life
+    end
   end
 end

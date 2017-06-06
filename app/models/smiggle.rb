@@ -1,6 +1,6 @@
 class Smiggle < ApplicationRecord
   validates :food, :drink, :happiness, :waste, 
-    numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, message: "must be between 0 and 100" } 
+    numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, message: "must be between 0 and 100" }  
 
   def increase_attribute attribute
     case attribute

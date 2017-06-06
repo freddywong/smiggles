@@ -41,7 +41,7 @@ $(function() {
     target.setAttribute('data-y', y);
   }
 
-  interact('.center').dropzone({
+  interact('.face').dropzone({
     // only accept elements matching this CSS selector
     accept: itemId,
     // Require a 75% element overlap for a drop to be possible
@@ -79,14 +79,26 @@ $(function() {
     // }
   });
 
+  function prepareData(type) {
+    var selector = $("#" + type);
+    if(selector[0].classList.contains("face")) {
+      return "face";
+    } else if (selector[0].classList.contains("waste")) {
+      return "waste";
+    } else {
+      return type;
+    }
+  }
+
   function itemId(event) {
     return '#' + event.relatedTarget.id
   }
 
   function dropItemFeedback(event) {
     var itemType = event.relatedTarget.id;
+    var dropzoneType = event.target.id;
     resetItem(itemType)
-    sendItem(itemType)    
+    sendItem(itemType, dropzoneType)    
   }
 
   function resetItem(itemType) {
@@ -96,17 +108,20 @@ $(function() {
       'translate(0px, 0px)';
     originalItem.get(0).setAttribute('data-x', 0);
     originalItem.get(0).setAttribute('data-y', 0);
-    $('#' + itemType).remove();
-    $('#' + itemType + '-progress').append(originalItem);
   }
 
-  function sendItem(itemType) {
+  function sendItem(itemType, dropzoneType) {
+    itemType = prepareData(itemType)
+    dropzoneType = prepareData(dropzoneType)
     var smiggleId = $(".smiggle").data('id')
     $.ajax({
       url: "/smiggles/" + smiggleId,
       method: 'patch',
       data: { 
-        item: itemType
+        smiggle: {
+          item: itemType,
+          dropzone: dropzoneType
+        }
       }
     }).done(function() {
       console.log('Updated ' + itemType)
