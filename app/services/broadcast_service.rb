@@ -3,9 +3,10 @@ class BroadcastService
     ActionCable.server.broadcast 'smiggles',
       default_face: smiggle.decorate.default_face,
       reaction: smiggle.reaction,
+      waste: smiggle.waste_count,
       happiness: smiggle.happiness,
       food: smiggle.food,
       drink: smiggle.drink,
-      life: smiggle.life
+      life: smiggle.life.amount
   end
 end

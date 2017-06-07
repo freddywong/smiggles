@@ -2,6 +2,8 @@ class Smiggle < ApplicationRecord
   validates :food, :drink, :happiness, :waste, 
     numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, message: "must be between 0 and 100" }  
 
+  has_many :lives
+
   attr_accessor :reaction
 
   def increase_attribute attribute
@@ -22,14 +24,9 @@ class Smiggle < ApplicationRecord
     end
   end
 
-  def calculate_life
-    life = %w( food drink happiness waste ).map do |attribute|
-      calculate attribute
-    end
-    self.life = life.sum  
+  def life
+    lives.where(died: nil).first
   end
-
-  private
 
   def calculate attribute
     case attribute
@@ -40,6 +37,8 @@ class Smiggle < ApplicationRecord
     end
     quantity * 0.25
   end
+
+  private
 
   def increase_food 
     self.food = increase_quantity('food') if within_limit? increase_quantity('food')

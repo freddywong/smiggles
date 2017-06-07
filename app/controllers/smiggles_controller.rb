@@ -3,7 +3,7 @@ class SmigglesController < ApplicationController
   before_action :update_smiggle, only: :update
 
   def update
-    if @smiggle.save
+    if @smiggle.save && @life.save
       BroadcastService.broadcast(@smiggle)
       head :ok
     end
@@ -13,9 +13,10 @@ class SmigglesController < ApplicationController
 
   def get_smiggle
     @smiggle = Smiggle.first.decorate
+    @life = @smiggle.life
   end
 
   def update_smiggle
-    @smiggle = ReactionService.new(@smiggle, params[:smiggle]).update_smiggle
+    @smiggle = ReactionService.new(@smiggle, @life, params[:smiggle]).update_smiggle
   end
 end

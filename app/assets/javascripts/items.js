@@ -85,6 +85,11 @@ $(function() {
     ondrop: dropItemFeedback
   });
 
+  var itemType;
+  var dropzoneType;
+  var preparedItemType;
+  var preparedDropzoneType;
+
   function prepareData(type) {
     var selector = $("#" + type);
     if(selector[0].classList.contains("face")) {
@@ -101,37 +106,24 @@ $(function() {
   }
 
   function dropItemFeedback(event) {
-    var itemType = event.relatedTarget.id;
-    var dropzoneType = event.target.id;
-    sendItem(itemType, dropzoneType)    
+    itemType = event.relatedTarget.id;
+    dropzoneType = event.target.id;
+    preparedItemType = prepareData(itemType);
+    preparedDropzoneType = prepareData(dropzoneType);
+
+    sendItem()    
   }
 
-  function itemResponder(itemType, preparedDropzoneType) {
-    switch(preparedDropzoneType) {
-      case "trash_can":
-        removeItem(itemType);
-        break;
-      default:
-        resetItem(itemType)
-    }
-  }
-
-  function removeItem(itemType) {
-    $('#' + itemType).remove()
-  }
-
-  function resetItem(itemType) {
+  function resetItem() {
     var originalItem = $('#' + itemType)
     originalItem.get(0).style.webkitTransform =
     originalItem.get(0).style.transform =
       'translate(0px, 0px)';
     originalItem.get(0).setAttribute('data-x', 0);
     originalItem.get(0).setAttribute('data-y', 0);
-  }
+  }  
 
-  function sendItem(itemType, dropzoneType) {
-    var preparedItemType = prepareData(itemType)
-    var preparedDropzoneType = prepareData(dropzoneType)
+  function sendItem() {
     var smiggleId = $(".smiggle").data('id')
     $.ajax({
       url: "/smiggles/" + smiggleId,
@@ -144,7 +136,29 @@ $(function() {
       }
     }).done(function() {
       console.log('Updated ' + itemType)
-      itemResponder(itemType, preparedDropzoneType)
+      itemResponder()
     });    
+  }
+
+  function itemResponder() {
+    switch(preparedDropzoneType) {
+      case "trash_can":
+        itemToTrashCan();
+        break;
+      default:
+        resetItem();
+    }
+  }
+
+  function itemToTrashCan() {
+    var dropzone = $('#' + dropzoneType)
+    dropzone.animateCss('rubberBand');
+    switch(preparedItemType) {
+      case "waste":
+        $('#' + itemType).remove()
+        break;
+      default: 
+        resetItem(itemType)  
+    }
   }
 });

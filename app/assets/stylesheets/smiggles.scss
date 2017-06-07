@@ -3,9 +3,15 @@
   position: absolute;
   top: 28%;
   left: 28%; 
+  z-index: 1;
+}
+
+#angry, #appreciation, #surprise {
+  z-index: 2;
 }
 
 .smiggles-container {
+  font-family: 'Vibur-Regular';
   height: 100%;
   padding: 20px;
 }

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606013835) do
+ActiveRecord::Schema.define(version: 20170607085759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "lives", force: :cascade do |t|
+    t.integer "amount"
+    t.datetime "died"
+    t.bigint "smiggle_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["smiggle_id"], name: "index_lives_on_smiggle_id"
+  end
 
   create_table "smiggles", force: :cascade do |t|
     t.integer "happiness"
@@ -22,7 +31,6 @@ ActiveRecord::Schema.define(version: 20170606013835) do
     t.integer "waste"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "life"
   end
 
 end

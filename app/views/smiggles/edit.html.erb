@@ -1,5 +1,6 @@
 <div class="smiggles-container valign-wrapper">
   <div class="container">
+    <h1>Hello</h1>  
     <div class="row">
       <div class="waste-container"></div>
       <div id="happiness-progress" class="progress-gauge">
@@ -40,8 +41,9 @@
   var foodProgress = foodProgress("<%= @smiggle.food %>", 'food-progress')
   var drinkProgress = drinkProgress("<%= @smiggle.drink %>", 'drink-progress')
   var happinessProgress = happinessProgress("<%= @smiggle.happiness %>", 'happiness-progress')
-  var lifeProgress = lifeProgress("<%= @smiggle.life %>")
+  var lifeProgress = lifeProgress("<%= @smiggle.life.amount %>")
 
-  var waste = showWaste("<%= @smiggle.waste_count %>", "<%= @smiggle.waste_image_path %>")
+  showWaste("<%= @smiggle.waste_count %>", "<%= @smiggle.waste_image_path %>")
+  showTrashCan("<%= @smiggle.waste_count %>")
 </script>
 
