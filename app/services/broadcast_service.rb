@@ -1,8 +1,8 @@
 class BroadcastService
-  def self.broadcast(smiggle, reaction)
+  def self.broadcast(smiggle)
     ActionCable.server.broadcast 'smiggles',
       default_face: smiggle.decorate.default_face,
-      reaction: reaction,
+      reaction: smiggle.reaction,
       happiness: smiggle.happiness,
       food: smiggle.food,
       drink: smiggle.drink,

@@ -79,6 +79,12 @@ $(function() {
     // }
   });
 
+  interact('#trash_can').dropzone({
+    accept: itemId,
+    overlap: 0.75,
+    ondrop: dropItemFeedback
+  });
+
   function prepareData(type) {
     var selector = $("#" + type);
     if(selector[0].classList.contains("face")) {
@@ -97,8 +103,21 @@ $(function() {
   function dropItemFeedback(event) {
     var itemType = event.relatedTarget.id;
     var dropzoneType = event.target.id;
-    resetItem(itemType)
     sendItem(itemType, dropzoneType)    
+  }
+
+  function itemResponder(itemType, preparedDropzoneType) {
+    switch(preparedDropzoneType) {
+      case "trash_can":
+        removeItem(itemType);
+        break;
+      default:
+        resetItem(itemType)
+    }
+  }
+
+  function removeItem(itemType) {
+    $('#' + itemType).remove()
   }
 
   function resetItem(itemType) {
@@ -111,20 +130,21 @@ $(function() {
   }
 
   function sendItem(itemType, dropzoneType) {
-    itemType = prepareData(itemType)
-    dropzoneType = prepareData(dropzoneType)
+    var preparedItemType = prepareData(itemType)
+    var preparedDropzoneType = prepareData(dropzoneType)
     var smiggleId = $(".smiggle").data('id')
     $.ajax({
       url: "/smiggles/" + smiggleId,
       method: 'patch',
       data: { 
         smiggle: {
-          item: itemType,
-          dropzone: dropzoneType
+          item: preparedItemType,
+          dropzone: preparedDropzoneType
         }
       }
     }).done(function() {
       console.log('Updated ' + itemType)
+      itemResponder(itemType, preparedDropzoneType)
     });    
   }
 });

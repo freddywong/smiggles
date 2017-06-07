@@ -1,32 +1,29 @@
 .item {
   position: absolute;
   z-index: 2;
+  width: 40px;
+  height: 40px;  
 }
 
 #food {
   top: 23%;
   left: 28%;
-  width: 40px;
-  height: 40px;
 }
 
 #drink {
   top: 24%;
   left: 26%;
-  width: 40px;
-  height: 40px;
 }
 
 #happiness {
   top: 26%;
   left: 24%;
-  width: 40px;
-  height: 40px;
 }
 
-.waste {
-  width: 40px;
-  height: 40px;  
+#trash_can {
+  width: 150px;
+  height: 150px;
+  display: block;
+  margin: auto;
 }
-
 

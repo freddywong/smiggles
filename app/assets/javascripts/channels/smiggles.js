@@ -22,7 +22,5 @@ App.smiggles = App.cable.subscriptions.create('SmigglesChannel', {
     updateProgress(data.drink, drinkProgress)
     updateProgress(data.happiness, happinessProgress)
     updateProgress(data.life, lifeProgress)
-
-
   }
 });
