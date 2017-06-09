@@ -1,17 +1,21 @@
-.face {
-  display: none;
-  position: absolute;
-  top: 28%;
-  left: 28%; 
-  z-index: 1;
-}
-
-#angry, #appreciation, #surprise {
-  z-index: 2;
-}
-
 .smiggles-container {
-  font-family: 'Vibur-Regular';
+  font-family: 'PatrickHandSC-Regular';
   height: 100%;
   padding: 20px;
+
+  .face {
+    display: none;
+    position: absolute;
+    top: 28%;
+    left: 28%; 
+    z-index: 1;
+  }
+
+  #angry, #appreciation, #surprise {
+    z-index: 2;
+  }
+
+  .time-alive {
+    text-align: center;
+  }
 }

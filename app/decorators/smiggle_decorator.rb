@@ -31,14 +31,14 @@ class SmiggleDecorator < Draper::Decorator
   end
 
   def time_alive
-    time_alive = (Time.zone.now - life.created_at) / 1.hour
+    time_alive = (Time.zone.now - life.created_at) / 3600
     case 
     when time_alive < 1
-      (time_alive * 100).round + " minutes"
-    when time_alive >= 1
-      time_alive.round + " hours"
+      "#{(time_alive * 100).round} minutes"
+    when time_alive >= 1 && time_alive < 24
+      "#{time_alive.round} hours"
     when time_alive >= 24
-      (time_alive / 24).round + " days"
+      "#{(time_alive / 24).round} days"
     end
   end
 end
