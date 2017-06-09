@@ -16,13 +16,22 @@
 @import "material_icons";
 @import "animate";
 
+@import "utilities/colors";
+@import "utilities/fonts";
+@import "utilities/menu";
+@import "utilities/dividers";
+
 @import "smiggles";
+@import "devise";
 @import "components/progress_bar";
 @import "components/items";
 @import "components/trash_can";
-@import "utilities/fonts";
-@import "utilities/menu";
 
 html, body {
   height: 100%;
+}
+
+.smiggles-font {
+  font-family: 'PatrickHandSC-Regular';
+  color: $matte-red
 }
