@@ -1,10 +1,10 @@
 if Rails.env.production?
   Sidekiq.configure_client do |config|
-    config.redis = { url: ENV['REDISTOGO_URL'], size: 1}
+    config.redis = { url: ENV['REDIS_URL'], size: 4}
   end
 
   Sidekiq.configure_server do |config|
-    config.redis = { size: 2 }
+    config.redis = { size: 4 }
   end
 end
 
