@@ -1,40 +1,43 @@
-<div class="smiggles-container valign-wrapper smiggles-font">
-  <div class="container">
-    <h1 class="time-alive"><%= @smiggle.time_alive %></h1>  
-    <div class="row">
-      <div class="waste-container"></div>
-      <div id="happiness-progress" class="progress-gauge">
-        <%= image_tag('yarn.png', id: 'happiness', class: 'draggable item') %>
-      </div>
-      <div class="waste-container"></div>
-    </div>
-    <div class="row">
-      <div class="waste-container"></div>
-      <div id="life-progress" class="progress-gauge dropzone">
-        <div class="smiggle" data-id=<%= @smiggle.id %>>
-          <%= render partial: "faces", locals: {faces: @smiggle.faces} %>  
+<div class="smiggles-container smiggles-font">
+  <%= render partial: 'layouts/side_nav' %>
+  <div class="valign-wrapper">
+    <div class="container">
+      <h1 class="time-alive"><%= @smiggle.time_alive %></h1>  
+      <div class="row">
+        <div class="waste-container"></div>
+        <div id="happiness-progress" class="progress-gauge">
+          <%= image_tag('yarn.png', id: 'happiness', class: 'draggable item') %>
         </div>
+        <div class="waste-container"></div>
       </div>
-      <div class="waste-container"></div>
-    </div>    
-    <div class="row">
-      <div class="waste-container"></div>
-      <div class="col s6">
-        <div id="food-progress" class="progress-gauge">
-          <%= image_tag('fish.png', id: 'food', class: 'draggable item') %>    
+      <div class="row">
+        <div class="waste-container"></div>
+        <div id="life-progress" class="progress-gauge dropzone">
+          <div class="smiggle" data-id=<%= @smiggle.id %>>
+            <%= render partial: "faces", locals: {faces: @smiggle.faces} %>  
+          </div>
         </div>
+        <div class="waste-container"></div>
+      </div>    
+      <div class="row">
+        <div class="waste-container"></div>
+        <div class="col s6">
+          <div id="food-progress" class="progress-gauge">
+            <%= image_tag('fish.png', id: 'food', class: 'draggable item') %>    
+          </div>
+        </div>  
+        <div class="col s6">
+          <div id="drink-progress" class="progress-gauge">
+            <%= image_tag('drop.png', id: 'drink', class: 'draggable item') %>
+          </div>      
+        </div>
+        <div class="waste-container"></div>
+      </div>
+      <div class="row">
+        <%= image_tag('trash_can.png', id: 'trash_can') %>
       </div>  
-      <div class="col s6">
-        <div id="drink-progress" class="progress-gauge">
-          <%= image_tag('drop.png', id: 'drink', class: 'draggable item') %>
-        </div>      
-      </div>
-      <div class="waste-container"></div>
-    </div>
-    <div class="row">
-      <%= image_tag('trash_can.png', id: 'trash_can') %>
     </div>  
-  </div>  
+  </div>
 </div>
 
 <script>
