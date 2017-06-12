@@ -14,11 +14,19 @@ class Smiggle < ApplicationRecord
       increase_drink
     when 'happiness'
       increase_happiness
+    when 'waste'
+      increase_waste
     end
   end  
 
   def decrease_attribute attribute
     case attribute
+    when 'food'
+      decrease_food
+    when 'drink'
+      decrease_drink
+    when 'happiness'
+      decrease_happiness      
     when 'waste'
       decrease_waste
     end
