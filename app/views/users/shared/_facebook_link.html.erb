@@ -2,7 +2,7 @@
   <%- resource_class.omniauth_providers.each do |provider| %>
     <div class="facebook">
       <%= link_to omniauth_authorize_path(resource_name, provider) do %>
-        <span><%= image_tag 'facebook-logo' %> Log in with <%= OmniAuth::Utils.camelize(provider) %></span>
+        <span><%= image_tag 'facebook-logo.png' %> Log in with <%= OmniAuth::Utils.camelize(provider) %></span>
       <% end %>
       <br />
     </div>

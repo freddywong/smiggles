@@ -11,7 +11,7 @@ class SmiggleDecorator < Draper::Decorator
       'life-60'
     when life.amount >= 40
       'life-40'  
-    when life.amount >= 20
+    when life.amount >= 20 || life.amount > 0
       'life-20'
     when life.amount == 0
       'life-0'
