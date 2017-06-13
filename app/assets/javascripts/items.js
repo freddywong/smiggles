@@ -5,12 +5,13 @@ $(function() {
     inertia: true,
     // keep the element within the area of it's parent
     // restrict: {
-    //   restriction: "parent",
-    //   endOnly: true,
+    //   restriction: ".smiggles-container",
+    //   endOnly: true
     //   elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
     // },
     // enable autoScroll
     autoScroll: true,
+    // manualstart: true,
 
     // call this function on every dragmove event
     onmove: dragMoveListener
@@ -23,7 +24,24 @@ $(function() {
     //     + (Math.sqrt(event.dx * event.dx +
     //                  event.dy * event.dy)|0) + 'px');
     // }
-  });
+  })
+  // .on('hold', function (event) {
+  //   var interaction = event.interaction;
+
+  //   if (!interaction.interacting()) {
+  //     interaction.start({ name: 'drag' },
+  //                       event.interactable,
+  //                       event.currentTarget);
+  //   }
+  // })
+  // .on('contextmenu', function (event) {
+  //   event.preventDefault();
+  // })
+  // .on('move', function (event) {
+  //   if (event.interaction.interacting()) {
+  //     event.preventDefault();
+  //   }
+  // })
 
   function dragMoveListener (event) {
     var target = event.target,
