@@ -1,10 +1,14 @@
+default: &default
+adapter: redis
+url: redis://localhost:6379/1
+
 development:
-  adapter: async
+  <<: *default
 
 test:
-  adapter: async
+  <<: *default
 
 production:
-  adapter: redis
+  <<: *default
   url: <%= ENV["REDISTOGO_URL"] %>
   channel_prefix: smiggles_production

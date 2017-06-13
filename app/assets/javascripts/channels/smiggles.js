@@ -11,7 +11,7 @@ App.smiggles = App.cable.subscriptions.create('SmigglesChannel', {
   received: function(data) {
 
     $(".smiggle").children().hide();
-    if(data.reaction.face) {
+    if(data.reaction && data.reaction.face) {
       showReactionFace(data.reaction.face, data.default_face)
     } else {
       showUpdatedFace(data.default_face)
