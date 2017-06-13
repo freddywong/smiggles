@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   
   mount ActionCable.server => '/cable'
   root 'smiggles#edit'
-  resources :smiggles, only: [:edit, :update]
+  resources :smiggles, only: [:create, :edit, :update] do
+    post :resurrect
+  end
 end

@@ -5,7 +5,8 @@ class UpdateSmigglesWorker
     Sidekiq::Extensions.enable_delay!
     Smiggle.all.each do |smiggle|
       update_time = calculate_update_time smiggle.life
-      UpdateSmiggleService.delay_for(update_time.minutes).update_attributes smiggle.id
+      AutoUpdateSmiggleService.delay_for(update_time.minutes).update_attributes smiggle.id
+      BroadcastService.broadcast smiggle
     end
   end
 

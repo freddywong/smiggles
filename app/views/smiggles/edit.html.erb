@@ -34,7 +34,11 @@
         <div class="waste-container"></div>
       </div>
       <div class="row">
-        <%= image_tag('trash_can.png', id: 'trash_can') %>
+        <% if !@life %>
+          <%= link_to "Restart", smiggle_resurrect_path(@smiggle), class: "btn-large waves-effect waves-light", method: :post %>
+        <% else %>
+          <%= image_tag('trash_can.png', id: 'trash_can') %>
+        <% end %>  
       </div>  
     </div>  
   </div>
@@ -44,7 +48,7 @@
   var foodProgress = foodProgress("<%= @smiggle.food %>", 'food-progress')
   var drinkProgress = drinkProgress("<%= @smiggle.drink %>", 'drink-progress')
   var happinessProgress = happinessProgress("<%= @smiggle.happiness %>", 'happiness-progress')
-  var lifeProgress = lifeProgress("<%= @smiggle.life.amount %>")
+  var lifeProgress = lifeProgress("<%= @smiggle.life ? @smiggle.life.amount : '0' %>")
 
   showWaste("<%= @smiggle.waste_count %>", "<%= @smiggle.waste_image_path %>")
   showTrashCan("<%= @smiggle.waste_count %>")

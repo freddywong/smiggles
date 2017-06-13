@@ -3,6 +3,8 @@ class Smiggle < ApplicationRecord
     numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, message: "must be between 0 and 100" }  
 
   has_many :lives
+  belongs_to :user
+  validates :user_id, uniqueness: true
 
   attr_accessor :reaction
 

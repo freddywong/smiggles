@@ -1,4 +1,4 @@
-class UpdateSmiggleService
+class AutoUpdateSmiggleService
   def initialize smiggle_id
     @smiggle = Smiggle.find smiggle_id
     @life = @smiggle.life

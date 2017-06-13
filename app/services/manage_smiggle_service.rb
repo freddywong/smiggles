@@ -1,5 +1,23 @@
-class ReactionService
-  def initialize(smiggle, life, smiggle_params)
+class ManageSmiggleService
+
+  def self.create_smiggle current_user
+    smiggle = Smiggle.create(food: 60, drink: 60, happiness: 60, waste: 60, user_id: current_user.id)
+    create_life smiggle.id
+  end
+
+  def self.create_life smiggle_id
+    Life.create(amount: 60, smiggle_id: smiggle_id) 
+  end
+
+  def self.update_smiggle(smiggle, life, smiggle_params)
+    service = self.new
+    service.send(:update_initialize, smiggle, life, smiggle_params)
+    service.send(:update_smiggle)
+  end
+
+  private
+
+  def update_initialize(smiggle, life, smiggle_params)
     @smiggle = smiggle
     @life = life
     @item = smiggle_params[:item]
@@ -15,8 +33,6 @@ class ReactionService
     end
     @smiggle
   end
-
-  private
 
   def waste_to_receiver
     case @dropzone

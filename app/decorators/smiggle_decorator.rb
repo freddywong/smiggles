@@ -1,7 +1,8 @@
 class SmiggleDecorator < Draper::Decorator
   delegate_all
-
+  
   def default_face
+    return 'life-0' if !life
     case 
     when life.amount == 100
       'life-100'
@@ -11,10 +12,8 @@ class SmiggleDecorator < Draper::Decorator
       'life-60'
     when life.amount >= 40
       'life-40'  
-    when life.amount >= 20 || life.amount > 0
+    when life.amount >= 20
       'life-20'
-    when life.amount == 0
-      'life-0'
     end
   end
 
@@ -31,7 +30,7 @@ class SmiggleDecorator < Draper::Decorator
   end
 
   def time_alive
-    return 'RIP' if life.amount == 0
+    return 'RIP' if !life
     time_alive = (Time.zone.now - life.created_at) / 3600
     case 
     when time_alive < 1
