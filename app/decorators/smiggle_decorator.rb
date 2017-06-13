@@ -31,6 +31,7 @@ class SmiggleDecorator < Draper::Decorator
   end
 
   def time_alive
+    return 'RIP' if life.amount == 0
     time_alive = (Time.zone.now - life.created_at) / 3600
     case 
     when time_alive < 1
