@@ -1,28 +1,8 @@
 class SmiggleDecorator < Draper::Decorator
   delegate_all
-  
-  def default_face
-    return 'life-0' if !life
-    case 
-    when life.amount == 100
-      'life-100'
-    when life.amount >= 80
-      'life-80'
-    when life.amount >= 60
-      'life-60'
-    when life.amount >= 40
-      'life-40'  
-    when life.amount >= 20
-      'life-20'
-    end
-  end
 
   def faces
     Dir.glob("app/assets/gifs/faces/*.gif").map{ |face| face.split('/').last.gsub('.gif', '') }
-  end
-
-  def waste_count
-    waste / 20
   end
 
   def waste_image_path

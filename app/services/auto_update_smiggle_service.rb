@@ -5,8 +5,9 @@ class AutoUpdateSmiggleService
   end
 
   def self.update_attributes smiggle_id
-    self.new(smiggle_id).send(:update_attributes)
-    BroadcastService.broadcast @smiggle
+    service = self.new(smiggle_id)
+    service.send(:update_attributes)
+    service.send(:broadcast)
   end
 
   private
@@ -26,5 +27,9 @@ class AutoUpdateSmiggleService
 
   def increase_attributes
     @smiggle.increase_attribute 'waste'
+  end
+
+  def broadcast
+    BroadcastService.broadcast @smiggle
   end
 end

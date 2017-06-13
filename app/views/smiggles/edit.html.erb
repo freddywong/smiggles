@@ -48,7 +48,7 @@
   var foodProgress = foodProgress("<%= @smiggle.food %>", 'food-progress')
   var drinkProgress = drinkProgress("<%= @smiggle.drink %>", 'drink-progress')
   var happinessProgress = happinessProgress("<%= @smiggle.happiness %>", 'happiness-progress')
-  var lifeProgress = lifeProgress("<%= @smiggle.life ? @smiggle.life.amount : '0' %>")
+  var lifeProgress = lifeProgress("<%= @smiggle.life_amount %>")
 
   showWaste("<%= @smiggle.waste_count %>", "<%= @smiggle.waste_image_path %>")
   showTrashCan("<%= @smiggle.waste_count %>")

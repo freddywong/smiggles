@@ -38,6 +38,10 @@ class Smiggle < ApplicationRecord
     lives.where(died: nil).first
   end
 
+  def life_amount
+    life ? life.amount : '0'
+  end
+
   def calculate attribute
     case attribute
     when 'food', 'drink', 'happiness'
@@ -46,6 +50,26 @@ class Smiggle < ApplicationRecord
       quantity = 100 - self.send(attribute)
     end
     quantity * 0.25
+  end
+
+  def default_face
+    return 'life-0' if !life
+    case 
+    when life.amount == 100
+      'life-100'
+    when life.amount >= 80
+      'life-80'
+    when life.amount >= 60
+      'life-60'
+    when life.amount >= 40
+      'life-40'  
+    when life.amount > 0 || life.amount >= 20
+      'life-20'
+    end
+  end
+
+  def waste_count
+    waste / 20
   end
 
   private

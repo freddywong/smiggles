@@ -9,6 +9,11 @@ class ManageSmiggleService
     Life.create(amount: 60, smiggle_id: smiggle_id) 
   end
 
+  def self.reset_smiggle smiggle_id
+    smiggle = Smiggle.find smiggle_id
+    smiggle.update(food: 60, drink: 60, happiness: 60, waste: 60)
+  end
+
   def self.update_smiggle(smiggle, life, smiggle_params)
     service = self.new
     service.send(:update_initialize, smiggle, life, smiggle_params)

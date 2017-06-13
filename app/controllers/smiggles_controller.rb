@@ -18,6 +18,7 @@ class SmigglesController < ApplicationController
 
   def resurrect
     create_life
+    reset_smiggle
     redirect_to action: 'edit'
   end
 
@@ -41,6 +42,10 @@ class SmigglesController < ApplicationController
 
   def create_smiggle
     ManageSmiggleService.create_smiggle current_user
+  end
+
+  def reset_smiggle
+    ManageSmiggleService.reset_smiggle params[:smiggle_id]
   end
 
   def update_smiggle
