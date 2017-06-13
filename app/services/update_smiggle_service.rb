@@ -6,6 +6,7 @@ class UpdateSmiggleService
 
   def self.update_attributes smiggle_id
     self.new(smiggle_id).send(:update_attributes)
+    BroadcastService.broadcast @smiggle
   end
 
   private
