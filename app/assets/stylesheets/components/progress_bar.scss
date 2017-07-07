@@ -1,19 +1,9 @@
-.progress-gauge {
+.progress-gauge, .small-progress-gauge {
   position: relative;
   margin: 0 auto;
 }
 
-#food-progress {
-  width: 80px;
-  height: 80px;
-}
-
-#drink-progress {
-  width: 80px;
-  height: 80px;
-}
-
-#happiness-progress {
+.small-progress-gauge {
   width: 80px;
   height: 80px;
 }
@@ -21,4 +11,15 @@
 #life-progress {
   width: 200px;
   height: 200px;
+}
+
+@media only screen and (max-device-width : 800px) and (orientation : portrait) {
+  .small-progress-gauge {
+    width: 60px;
+    height: 60px;
+  }
+  #life-progress {
+    width: 150px;
+    height: 150px;
+  }
 }

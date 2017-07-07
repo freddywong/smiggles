@@ -16,5 +16,16 @@
 
   .time-alive {
     text-align: center;
+    font-size: 40px;
+  }
+
+  @media only screen and (max-device-width : 800px) and (orientation : portrait) {
+    .face {
+      width: 65px;
+      height: auto;
+    }
+    .time-alive {
+      font-size: 25px;
+    }
   }
 }

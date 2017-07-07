@@ -1,11 +1,17 @@
 <div class="smiggles-container smiggles-font">
-  <%= render partial: 'layouts/side_nav' %>
   <div class="valign-wrapper">
     <div class="container">
-      <h1 class="time-alive"><%= @smiggle.time_alive %></h1>  
+      <div class="row">
+        <div class="col s2">
+          <%= render partial: 'layouts/side_nav' %>
+        </div> 
+        <div class="col s8">
+          <h1 class="time-alive"><%= @smiggle.time_alive %></h1>  
+        </div>
+      </div>
       <div class="row">
         <div class="waste-container"></div>
-        <div id="happiness-progress" class="progress-gauge">
+        <div id="happiness-progress" class="small-progress-gauge">
           <%= image_tag('yarn.png', id: 'happiness', class: 'draggable item') %>
         </div>
         <div class="waste-container"></div>
@@ -22,12 +28,12 @@
       <div class="row">
         <div class="waste-container"></div>
         <div class="col s6">
-          <div id="food-progress" class="progress-gauge">
+          <div id="food-progress" class="small-progress-gauge">
             <%= image_tag('fish.png', id: 'food', class: 'draggable item') %>    
           </div>
         </div>  
         <div class="col s6">
-          <div id="drink-progress" class="progress-gauge">
+          <div id="drink-progress" class="small-progress-gauge">
             <%= image_tag('drop.png', id: 'drink', class: 'draggable item') %>
           </div>      
         </div>
