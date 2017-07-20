@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function() {
+$(function() {
   interact('.draggable')
   .draggable({
     inertia: true,
