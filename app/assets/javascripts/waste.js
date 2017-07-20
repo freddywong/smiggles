@@ -20,5 +20,9 @@ function showWaste(waste_count, waste_image_path) {
   for(var i = 0; i < waste_count; i++) {
     container = selectContainer();
     appendWaste(i, container, waste_image_path);
-  }
+  }  
+}
+
+function clearWaste(){
+  $('.waste-container').empty();
 }

@@ -19,6 +19,11 @@
     font-size: 40px;
   }
 
+  #restart {
+    background-color: $matte-red;
+    display: none;
+  }
+
   @media only screen and (max-device-width : 800px) and (orientation : portrait) {
     .face {
       width: 65px;

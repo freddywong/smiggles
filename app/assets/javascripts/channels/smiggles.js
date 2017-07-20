@@ -17,11 +17,14 @@ App.smiggles = App.cable.subscriptions.create('SmigglesChannel', {
       showUpdatedFace(data.default_face)
     }
 
-    updateProgress(data.food, foodProgress)
-    updateProgress(data.drink, drinkProgress)
-    updateProgress(data.happiness, happinessProgress)
-    updateProgress(data.life, lifeProgress)
+    updateProgressBar(data.food, foodProgress)
+    updateProgressBar(data.drink, drinkProgress)
+    updateProgressBar(data.happiness, happinessProgress)
+    updateProgressBar(data.life, lifeProgress)
 
-    showTrashCan(data.waste)
+    clearWaste();
+    showRestartButton(data.life);
+    showWaste(data.waste, $('#life-progress').data('waste-image-path'));
+    showTrashCan(data.waste, data.life);
   }
 });
