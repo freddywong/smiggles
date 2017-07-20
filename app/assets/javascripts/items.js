@@ -1,47 +1,10 @@
-$(function() {
+document.addEventListener("turbolinks:load", function() {
   interact('.draggable')
   .draggable({
-    // enable inertial throwing
     inertia: true,
-    // keep the element within the area of it's parent
-    // restrict: {
-    //   restriction: ".smiggles-container",
-    //   endOnly: true
-    //   elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-    // },
-    // enable autoScroll
     autoScroll: true,
-    // manualstart: true,
-
-    // call this function on every dragmove event
     onmove: dragMoveListener
-    // call this function on every dragend event
-    // onend: function (event) {
-    //   var textEl = event.target.querySelector('p');
-
-    //   textEl && (textEl.textContent =
-    //     'moved a distance of '
-    //     + (Math.sqrt(event.dx * event.dx +
-    //                  event.dy * event.dy)|0) + 'px');
-    // }
   })
-  // .on('hold', function (event) {
-  //   var interaction = event.interaction;
-
-  //   if (!interaction.interacting()) {
-  //     interaction.start({ name: 'drag' },
-  //                       event.interactable,
-  //                       event.currentTarget);
-  //   }
-  // })
-  // .on('contextmenu', function (event) {
-  //   event.preventDefault();
-  // })
-  // .on('move', function (event) {
-  //   if (event.interaction.interacting()) {
-  //     event.preventDefault();
-  //   }
-  // })
 
   function dragMoveListener (event) {
     var target = event.target,
@@ -64,37 +27,7 @@ $(function() {
     accept: itemId,
     // Require a 75% element overlap for a drop to be possible
     overlap: 0.75,
-
-    // // listen for drop related events:
-
-    // ondropactivate: function (event) {
-      // add active dropzone feedback
-      // event.target.classList.add('drop-active');
-
-    // },
-
-    // ondragenter: function (event) {
-    //   var draggableElement = event.relatedTarget,
-    //       dropzoneElement = event.target;
-
-    //   // feedback the possibility of a drop
-    //   dropzoneElement.classList.add('drop-target');
-    //   draggableElement.classList.add('can-drop');
-    //   draggableElement.textContent = 'Dragged in';
-    // },
-    // ondragleave: function (event) {
-    //   // remove the drop feedback style
-    //   event.target.classList.remove('drop-target');
-    //   event.relatedTarget.classList.remove('can-drop');
-    //   event.relatedTarget.textContent = 'Dragged out';
-    // },
     ondrop: dropItemFeedback
-
-    // ondropdeactivate: function (event) {
-    //   // remove active dropzone feedback
-    //   event.target.classList.remove('drop-active');
-    //   event.target.classList.remove('drop-target');
-    // }
   });
 
   interact('#trash_can').dropzone({

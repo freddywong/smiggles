@@ -1,4 +1,5 @@
 class SmigglesController < ApplicationController
+  before_action :authenticate_user!
   before_action :get_smiggle, only: :update
   before_action :update_smiggle, only: :update
 
@@ -10,10 +11,10 @@ class SmigglesController < ApplicationController
 
   def edit
     if !current_user.smiggle
-      create
-    else
-      get_smiggle
+      create_smiggle
+      current_user.reload
     end
+    get_smiggle
   end
 
   def resurrect

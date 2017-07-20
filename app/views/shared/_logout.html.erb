@@ -1,5 +1,5 @@
 <% if current_user %>
-  <%= link_to destroy_user_session_path, method: :delete do %>
+  <%= link_to destroy_user_session_path, method: :delete, remote: true, id: "logout" do %>
     <i class="material-icons">exit_to_app</i>Logout
   <% end %>
 <% end %>

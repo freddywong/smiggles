@@ -11,14 +11,14 @@
       </div>
       <div class="row">
         <div class="waste-container"></div>
-        <div id="happiness-progress" class="small-progress-gauge">
+        <div id="happiness-progress" class="small-progress-gauge" data-happiness=<%= @smiggle.happiness %>>
           <%= image_tag('yarn.png', id: 'happiness', class: 'draggable item') %>
         </div>
         <div class="waste-container"></div>
       </div>
       <div class="row">
         <div class="waste-container"></div>
-        <div id="life-progress" class="progress-gauge dropzone">
+        <div id="life-progress" class="progress-gauge dropzone" data-life=<%= @smiggle.life_amount %> data-waste=<%= @smiggle.waste_count %> data-waste-image-path=<%= @smiggle.waste_image_path %>>
           <div class="smiggle" data-id=<%= @smiggle.id %>>
             <%= render partial: "faces", locals: {faces: @smiggle.faces} %>  
           </div>
@@ -28,12 +28,12 @@
       <div class="row">
         <div class="waste-container"></div>
         <div class="col s6">
-          <div id="food-progress" class="small-progress-gauge">
+          <div id="food-progress" class="small-progress-gauge" data-food=<%= @smiggle.food %>>
             <%= image_tag('fish.png', id: 'food', class: 'draggable item') %>    
           </div>
         </div>  
         <div class="col s6">
-          <div id="drink-progress" class="small-progress-gauge">
+          <div id="drink-progress" class="small-progress-gauge" data-drink=<%= @smiggle.drink %>>
             <%= image_tag('drop.png', id: 'drink', class: 'draggable item') %>
           </div>      
         </div>
@@ -49,14 +49,3 @@
     </div>  
   </div>
 </div>
-
-<script>
-  var foodProgress = foodProgress("<%= @smiggle.food %>", 'food-progress')
-  var drinkProgress = drinkProgress("<%= @smiggle.drink %>", 'drink-progress')
-  var happinessProgress = happinessProgress("<%= @smiggle.happiness %>", 'happiness-progress')
-  var lifeProgress = lifeProgress("<%= @smiggle.life_amount %>")
-
-  showWaste("<%= @smiggle.waste_count %>", "<%= @smiggle.waste_image_path %>")
-  showTrashCan("<%= @smiggle.waste_count %>")
-</script>
-
