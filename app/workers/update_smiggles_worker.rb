@@ -2,7 +2,6 @@ class UpdateSmigglesWorker
   include Sidekiq::Worker
 
   def perform(*args)
-    Sidekiq::Extensions.enable_delay!
     Smiggle.all.each do |smiggle|
       if smiggle.life
         update_time = calculate_update_time(smiggle.life)
