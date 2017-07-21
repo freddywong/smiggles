@@ -1,7 +1,7 @@
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
     <div class="facebook">
-      <%= link_to omniauth_authorize_path(resource_name, provider), remote: true do %>
+      <%= link_to omniauth_authorize_path(resource_name, provider), id: 'facebook-link' do %>
         <span><%= image_tag 'facebook-logo.png' %> Log in with <%= OmniAuth::Utils.camelize(provider) %></span>
       <% end %>
       <br />
