@@ -13,7 +13,7 @@
   height: 200px;
 }
 
-@media only screen and (max-device-width : 800px) and (orientation : portrait) {
+@media only screen and (max-device-width : 300px) and (orientation : portrait) {
   .small-progress-gauge {
     width: 60px;
     height: 60px;

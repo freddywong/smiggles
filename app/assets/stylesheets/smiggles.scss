@@ -24,7 +24,7 @@
     display: none;
   }
 
-  @media only screen and (max-device-width : 800px) and (orientation : portrait) {
+  @media only screen and (max-device-width : 300px) and (orientation : portrait) {
     .face {
       width: 65px;
       height: auto;
