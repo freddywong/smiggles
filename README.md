@@ -1,17 +1,15 @@
 # Smiggles App
 
-This the repository for the Smiggles Application.
-Remember the [tamagotchis](https://en.wikipedia.org/wiki/Tamagotchi) of the 90s?  
-The Smiggles app recreates this experience via Ruby on Rails where you can take care of a cat named Smiggles.  
-Reading this you may think that Smiggles can only be played on the browser,   
-but no, it can also be played on both iOS and Android as a downloadable app!
+This the repository for the Smiggles Application. Remember the [tamagotchis](https://en.wikipedia.org/wiki/Tamagotchi) of the 90s? The Smiggles app recreates this experience via Ruby on Rails where you can take care of a cat named Smiggles.  
+
+Reading this you may think that Smiggles can only be played on the browser, but no, it can also be played on both iOS and Android as a downloadable app!
 
 ## How To Play
 Smiggles only needs 4 things from a loving owner - its favourite yarn, some food and water, and someone to clean up it's icky mess.  
 Be sure to drag these to their correct places - Smiggles knows what is food and what is his mess :wink:
 ![](smiggle-preview.gif)
 
-Be sure to check in periodically. Smiggle won't last long without you.
+Be sure to check in now and again. Smiggles won't last long without you.
 
 Alternatively you can visit the [Smiggles site](https://smiggles-production.herokuapp.com/users/sign_in) to play straight away
 
@@ -24,13 +22,13 @@ Alternatively you can visit the [Smiggles site](https://smiggles-production.hero
 - git version control
 
 ## Technical Overview
-### How do Smiggle's attributes depreciate?
-Heroku Scheduler sends request to Smiggle to start a background job. This background job is delayed to a certain time every hour depending on when Smiggle's life first started. ActionCable is used to instantly update Smiggle - you can see his attributes go down. ActionCable will also be used for a future version of Smiggle when multiple friends can take care of the same Smiggle.
+### How do Smiggles' attributes depreciate?
+Heroku Scheduler sends a request to Smiggles to start a background job. This background job is delayed to a certain time every hour depending on when Smiggles' life first started. ActionCable is used to instantly update Smiggles - you can see his attributes go down. ActionCable will also be used for a future version of Smiggles when multiple friends can take care of the same Smiggles.
 
-### What happens when I drag food/yarn/water to Smiggle and waste to the trash bin?
-An ajax request is fired and recieved by the Rails server. This sets into motion the many cogs and gears in the backend to update Smiggle's `boredom`, `hunger`, `thirst` and `waste` attributes. This is calculated to provide an amount to Smiggle's `life`. 
+### What happens when I drag food/yarn/water to Smiggles and waste to the trash bin?
+An ajax request is fired and recieved by the Rails server. This sets into motion the many cogs and gears in the backend to update Smiggles' `boredom`, `hunger`, `thirst` and `waste` attributes. These are calculated to provide an amount to Smiggles' `life`. 
 
-These are then sent via ActionCable to the app/browser and Smiggle's reaction and attribute bars are updated before the user's eyes! If this life is 0, Smiggles dies and the user needs to reset Smiggle. The time alive counter then resets.
+These are then sent via ActionCable to the app/browser and Smiggles' reaction and attribute bars are updated before the user's eyes! If this life is 0, Smiggles dies and the user needs to reset Smiggles. The time alive counter then resets.
 
 ## Future Plans
 Smiggles is a work in progress. I intend to built many more features over time:
@@ -50,7 +48,7 @@ Smiggles is a work in progress. I intend to built many more features over time:
   - [Travis CI](https://travis-ci.org/) for continuous integration.
   
 **Long Term**
-- Scoreboard consisting of longest times you have kept Smiggle alive and happy
+- Scoreboard consisting of longest times you have kept Smiggles alive and happy
 - Connect with your Facebook friends to take care of the same Smiggles.
 - Other characters, such as Sir Quackers the duck
 
