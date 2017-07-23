@@ -2,7 +2,7 @@
 
 This the repository for the Smiggles Application. Remember the [tamagotchis](https://en.wikipedia.org/wiki/Tamagotchi) of the 90s? The Smiggles app recreates this experience via Ruby on Rails where you can take care of a cat named Smiggles.  
 
-Reading this you may think that Smiggles can only be played on the browser, but no, it can also be played on both iOS and Android as a downloadable app!
+Reading this you may think that Smiggles can only be played on the browser, but no, it can also be played on both [iOS](https://github.com/freddywong/smiggles_ios) and [Android](https://github.com/freddywong/smiggles_android) as a downloadable app!
 
 ## How To Play
 Smiggles only needs 4 things from a loving owner - its favourite yarn, some food and water, and someone to clean up it's icky mess.  
@@ -11,7 +11,8 @@ Be sure to drag these to their correct places - Smiggles knows what is food and 
 
 Be sure to check in now and again. Smiggles won't last long without you.
 
-Alternatively you can visit the [Smiggles site](https://smiggles-production.herokuapp.com/users/sign_in) to play straight away
+Smiggles has yet to be released on the Google Play Store or the App Store. But you can easily set up your local environment to try it out on [iOS](https://github.com/freddywong/smiggles_ios) or [Android](https://github.com/freddywong/smiggles_android).
+Alternatively you can visit the [Smiggles site](https://smiggles-production.herokuapp.com/users/sign_in) to play straight away.
 
 ## Prerequisites
 
